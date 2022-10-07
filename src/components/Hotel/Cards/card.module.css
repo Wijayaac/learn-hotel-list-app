@@ -1,0 +1,44 @@
+.image {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: .63rem;
+}
+
+.rating {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: .31rem;
+    color: var(--white);
+    background-color: var(--brown);
+    padding: .63rem;
+    box-shadow: 0 0 10px 0 var(--brown);
+}
+
+
+.image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.column {
+    flex-basis: 50%;
+    max-width: 50%;
+}
+
+.name {}
