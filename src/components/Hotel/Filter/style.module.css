@@ -1,0 +1,13 @@
+.filter form {
+    display: flex;
+    gap: 1.25rem;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.field {
+    position: relative;
+    display: flex;
+    gap: .5rem;
+}
