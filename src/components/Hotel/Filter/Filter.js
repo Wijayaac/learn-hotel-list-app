@@ -1,5 +1,5 @@
 import debounce from "lodash.debounce";
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 
 import { getFilteredHotels } from "./Filter.handler";
@@ -31,28 +31,26 @@ const Filter = (props) => {
 
   const handleSearch = debounce((e) => {
     setValue("name_like", e.target.value);
-
     let filter = getValues();
-
     removeEmptyFields(filter);
-
     getFilteredHotels(filter, setHotels);
   }, 500);
 
   return (
     <div className={style.filter}>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form aria-label='formFilter' onSubmit={handleSubmit(onSubmit)}>
         <div className={style.field}>
           <label htmlFor='name_like'>Name</label>
           <input
             id='name_like'
+            aria-label='name'
             {...register("name_like")}
             onChange={handleSearch}
           />
         </div>
         <div className={style.field}>
           <label htmlFor='location'>Location</label>
-          <select id='location' {...register("location")}>
+          <select aria-label='location' id='location' {...register("location")}>
             <option value=''>All</option>
             <option value='Bandung'>Bandung</option>
             <option value='Jakarta'>Jakarta</option>
@@ -61,7 +59,7 @@ const Filter = (props) => {
         </div>
         <div className={style.field}>
           <label htmlFor='stars'>Rating</label>
-          <select id='stars' {...register("stars")}>
+          <select aria-label='star' id='stars' {...register("stars")}>
             <option value=''>All</option>
             <option value='1'>1</option>
             <option value='2'>2</option>
@@ -70,7 +68,7 @@ const Filter = (props) => {
             <option value='5'>5</option>
           </select>
         </div>
-        <button>Apply</button>
+        <button aria-label='submitButton'>Apply</button>
         <button type='button' onClick={handleReset}>
           Reset
         </button>
