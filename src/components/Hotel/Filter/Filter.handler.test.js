@@ -52,5 +52,13 @@ describe("CarFilterHandler", () => {
       expect(axios.get).toBeCalledWith(`${API_URL}/hotels/`, { params });
       expect(mockSetHotels).toBeCalledWith(data);
     });
+    it("should not returning hotel when there is an error", async () => {
+      axios.get.mockResolvedValue({ data: null });
+
+      await getFilteredHotels(null, mockSetHotels);
+
+      expect(axios.get).toBeCalledWith(`${API_URL}/hotels/`, { params: null });
+      expect(mockSetHotels).toBeCalledWith(null);
+    });
   });
 });

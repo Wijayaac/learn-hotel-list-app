@@ -9,7 +9,7 @@ const getFilteredHotels = async (params, setHotels) => {
     });
     setHotels(data);
   } catch (error) {
-    console.log(error);
+    setHotels(null);
   }
 };
 
