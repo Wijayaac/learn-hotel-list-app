@@ -4,9 +4,6 @@ import { getFilteredHotels } from "./Filter.handler";
 import { API_URL } from "../../../constants/API";
 
 jest.mock("axios");
-jest.mock("./Filter.handler", () => ({
-  getFilteredHotels: jest.fn(),
-}));
 
 describe("CarFilterHandler", () => {
   describe("getFilteredHotels", () => {
@@ -30,7 +27,7 @@ describe("CarFilterHandler", () => {
 
       await getFilteredHotels(params, mockSetHotels);
 
-      expect(axios.get).toBeCalledWith(`${API_URL}/hotels`, { params });
+      expect(axios.get).toBeCalledWith(`${API_URL}/hotels/`, { params });
       expect(mockSetHotels).toBeCalledWith(data);
     });
     it("should search car by its closest model when invoked", async () => {
@@ -52,7 +49,7 @@ describe("CarFilterHandler", () => {
 
       await getFilteredHotels(params, mockSetHotels);
 
-      expect(axios.get).toBeCalledWith(`${API_URL}/hotels`, { params });
+      expect(axios.get).toBeCalledWith(`${API_URL}/hotels/`, { params });
       expect(mockSetHotels).toBeCalledWith(data);
     });
   });
