@@ -53,7 +53,7 @@ describe("CarFilterHandler", () => {
       expect(mockSetHotels).toBeCalledWith(data);
     });
     it("should not returning hotel when there is an error", async () => {
-      axios.get.mockResolvedValue({ data: null });
+      axios.get.mockRejectedValue({ data: null });
 
       await getFilteredHotels(null, mockSetHotels);
 
